@@ -8,6 +8,8 @@ public AudioPlayer flame;
 
 public boolean sound = true;
 
+//public Animation flameLow = new Animation("images/sprites/senpai/FlameLow", 3, 256, 256);
+
 void setup()
 {
   background(0);
