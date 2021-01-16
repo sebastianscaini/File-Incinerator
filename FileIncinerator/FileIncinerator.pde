@@ -16,7 +16,7 @@ public PImage body;
 
 public boolean tracking = false;
 
-//public Animation flameLow = new Animation("images/sprites/senpai/FlameLow", 3, 256, 256);
+public Animation flameLow;
 
 void setup()
 {
@@ -24,16 +24,19 @@ void setup()
   size(512, 512);
   frameRate(60);
   //surface.setIcon(loadImage("transparentLogo.png"));
+  
+  flameLow = new Animation("images/body/body0_", 60, 0, 0); 
+  
   surface.setTitle("File Incinerator");
   drop = new SDrop(this);
   minim = new Minim(this);
   
-  ambience = minim.loadFile("Sounds/ambience.mp3");
+  ambience = minim.loadFile("sound/ambience.mp3");
   ambience.play();
   ambience.loop();
   
-  body = loadImage("Sprites/Body/Body.png");
-  eyes = loadImage("Sprites/Eyes/Eyes.png");
+  body = loadImage("images/body/Body.png");
+  eyes = loadImage("images/eyes/Eyes.png");
   
   dl = new MyDropListener();
   
@@ -47,7 +50,9 @@ void setup()
 
 void draw()
 {
-  image(body, 0, 0);
+  //image(body, 0, 0);
+  
+  flameLow.display();
   
   if(tracking)
   {
@@ -72,7 +77,7 @@ void dropEvent(DropEvent theDropEvent)
 { 
   if(sound)
   {
-    flame = minim.loadFile("Sounds/flame.mp3");
+    flame = minim.loadFile("sound/flame.mp3");
     flame.play();
   }
   

@@ -14,7 +14,7 @@ class Animation{
     
     //load images into an array
     for(int i = 0; i < imageCount; i++){
-      String filename = image + nf(i, 8) + ".png";
+      String filename = image + i + ".png";
       images[i] = loadImage(filename);
     }
   }
