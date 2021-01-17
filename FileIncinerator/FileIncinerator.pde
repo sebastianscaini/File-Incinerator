@@ -27,7 +27,7 @@ void setup()
   background(0);
   size(512, 512);
   frameRate(60);
-  //surface.setIcon(loadImage("transparentLogo.png"));
+  surface.setIcon(loadImage("images/icon.png"));
   
   flameLow = new Animation("images/body/Body_", 96, 0, 0); 
   
