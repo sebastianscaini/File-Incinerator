@@ -11,7 +11,11 @@ public boolean sound = true;
 
 public PVector eyePosition, lastPosition;
 
+public PImage customBackground;
+public PImage foreground;
 public PImage eyes;
+public PImage eyeHoles;
+public PImage mouth;
 public PImage body;
 
 public boolean tracking = false;
@@ -25,7 +29,7 @@ void setup()
   frameRate(60);
   //surface.setIcon(loadImage("transparentLogo.png"));
   
-  flameLow = new Animation("images/body/body0_", 60, 0, 0); 
+  flameLow = new Animation("images/body/Body_", 96, 0, 0); 
   
   surface.setTitle("File Incinerator");
   drop = new SDrop(this);
@@ -35,8 +39,12 @@ void setup()
   ambience.play();
   ambience.loop();
   
-  body = loadImage("images/body/Body.png");
-  eyes = loadImage("images/eyes/Eyes.png");
+  //body = loadImage("images/body/Body.png");
+  eyes = loadImage("images/face/Eyes.png");
+  mouth = loadImage("images/face/Mouth.png");
+  eyeHoles = loadImage("images/face/Eyeholes.png");
+  customBackground = loadImage("images/scene/Background.png");
+  foreground = loadImage("images/scene/Foreground.png");
   
   dl = new MyDropListener();
   
@@ -50,9 +58,12 @@ void setup()
 
 void draw()
 {
-  //image(body, 0, 0);
+  background(0);
+  image(customBackground, 0, 0);
   
   flameLow.display();
+  
+  image(eyeHoles, 0, 0);
   
   if(tracking)
   {
@@ -68,6 +79,10 @@ void draw()
     lastPosition = eyePosition;
     image(eyes, eyePosition.x, eyePosition.y);
   }
+  
+  image(mouth, 0, 0);
+  
+  image(foreground, 0, 0);
   
   dl.draw();
 }
